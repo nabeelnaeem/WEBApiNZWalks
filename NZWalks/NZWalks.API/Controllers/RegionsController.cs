@@ -133,5 +133,34 @@ namespace NZWalks.API.Controllers
             };
             return Ok(regionDto);
         }
+
+        // Delete Region
+        // DELETE: https://localhost:portnumber/api/regions/{id}
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public IActionResult Delete([FromRoute] Guid id)
+        {
+            //Check if region exists
+            var regionDomainModel = dbContext.Regions.FirstOrDefault(r => r.Id == id);
+            if (regionDomainModel == null)
+            {
+                return NotFound();
+            }
+
+            dbContext.Regions.Remove(regionDomainModel);
+            dbContext.SaveChanges();
+
+            //Optional - Return Deleted Object Back
+            //Map Domain Model to DTO
+            var regionDto = new RegionDto
+            {
+                Id = regionDomainModel.Id,
+                Code = regionDomainModel.Code,
+                Name = regionDomainModel.Name,
+                RegionImageUrl = regionDomainModel.RegionImageUrl
+            };
+
+            return Ok(regionDto);
+        }
     }
 }
