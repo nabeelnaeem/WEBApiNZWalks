@@ -61,6 +61,9 @@ namespace NZWalks.API.Controllers
                 SortBy, isAscending ?? true,
                 pageNumber, pageSize);
 
+
+            throw new Exception("This is a test exception");
+
             //Map domain model to dto
             return Ok(mapper.Map<List<WalkDto>>(walksDomainModel));
         }

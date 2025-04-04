@@ -1,0 +1,48 @@
+2025-04-04 08:16:09.139 +05:00 [INF] User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-04 08:16:09.321 +05:00 [INF] Now listening on: https://localhost:7293
+2025-04-04 08:16:09.322 +05:00 [INF] Now listening on: http://localhost:5055
+2025-04-04 08:16:09.353 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-04 08:16:09.354 +05:00 [INF] Hosting environment: Development
+2025-04-04 08:16:09.354 +05:00 [INF] Content root path: F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API
+2025-04-04 08:16:09.862 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - null null
+2025-04-04 08:16:09.994 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - 200 null text/html;charset=utf-8 136.643ms
+2025-04-04 08:16:10.083 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-04 08:16:10.083 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - null null
+2025-04-04 08:16:10.088 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 5.7026ms
+2025-04-04 08:16:10.115 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.6766ms
+2025-04-04 08:16:10.150 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - null null
+2025-04-04 08:16:10.167 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.6377ms
+2025-04-04 08:16:27.653 +05:00 [INF] Request starting HTTP/2 GET https://localhost:7293/api/Walks?pageNumber=1&pageSize=1000 - null null
+2025-04-04 08:16:27.700 +05:00 [INF] Executing endpoint 'NZWalks.API.Controllers.WalksController.GetAll (NZWalks.API)'
+2025-04-04 08:16:27.716 +05:00 [INF] Route matched with {action = "GetAll", controller = "Walks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(System.String, System.String, System.String, System.Nullable`1[System.Boolean], Int32, Int32) on controller NZWalks.API.Controllers.WalksController (NZWalks.API).
+2025-04-04 08:16:28.325 +05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-04-04 08:16:28.326 +05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-04-04 08:16:28.623 +05:00 [INF] Executed DbCommand (35ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Description], [t].[DifficultyId], [t].[LengthInKm], [t].[Name], [t].[RegionId], [t].[WalkImageUrl], [d].[Id], [d].[Name], [r].[Id], [r].[Code], [r].[Name], [r].[RegionImageUrl]
+FROM (
+    SELECT [w].[Id], [w].[Description], [w].[DifficultyId], [w].[LengthInKm], [w].[Name], [w].[RegionId], [w].[WalkImageUrl]
+    FROM [Walks] AS [w]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Difficulties] AS [d] ON [t].[DifficultyId] = [d].[Id]
+INNER JOIN [Regions] AS [r] ON [t].[RegionId] = [r].[Id]
+2025-04-04 08:16:28.709 +05:00 [INF] Executed action NZWalks.API.Controllers.WalksController.GetAll (NZWalks.API) in 989.4535ms
+2025-04-04 08:16:28.711 +05:00 [INF] Executed endpoint 'NZWalks.API.Controllers.WalksController.GetAll (NZWalks.API)'
+2025-04-04 08:16:28.745 +05:00 [ERR] 065ed3a5-205e-4292-b386-810883aaa1d7 : This is a test exception
+System.Exception: This is a test exception
+   at NZWalks.API.Controllers.WalksController.GetAll(String filterOn, String filterQuery, String SortBy, Nullable`1 isAscending, Int32 pageNumber, Int32 pageSize) in F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\Controllers\WalksController.cs:line 65
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at NZWalks.API.Middlewares.ExceptionHandlerMiddleware.InvokeAsync(HttpContext httpContext) in F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\Middlewares\ExceptionHandlerMiddleware.cs:line 22
+2025-04-04 08:16:28.781 +05:00 [INF] Request finished HTTP/2 GET https://localhost:7293/api/Walks?pageNumber=1&pageSize=1000 - 500 null application/json; charset=utf-8 1127.2259ms

@@ -37,11 +37,11 @@ namespace NZWalks.API.Controllers
         public async Task<IActionResult> GetAll()
         {
             //Log Information
-            logger.LogInformation("GetAll Regions is called");
+            //logger.LogInformation("GetAll Regions is called");
             //Get Data From Database - Domain Models
             var regionsDomain = await regionRepository.GetAllAsync();
 
-            logger.LogInformation($"Finished GetAllRegions with Data: {JsonSerializer.Serialize(regionsDomain)}");
+            //logger.LogInformation($"Finished GetAllRegions with Data: {JsonSerializer.Serialize(regionsDomain)}");
             //With Automapper
             return Ok(mapper.Map<List<RegionDto>>(regionsDomain));
 
