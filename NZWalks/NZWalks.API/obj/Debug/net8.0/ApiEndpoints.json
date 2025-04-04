@@ -1,8 +1,24 @@
 [
   {
     "ContainingType": "NZWalks.API.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginRequestDto",
+        "Type": "NZWalks.API.Models.DTO.LoginRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NZWalks.API.Controllers.AuthController",
     "Method": "Register",
-    "RelativePath": "api/Auth",
+    "RelativePath": "api/Auth/Register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -16,17 +32,27 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "NZWalks.API.Controllers.AuthController",
-    "Method": "Login",
-    "RelativePath": "api/Auth/Login",
+    "ContainingType": "NZWalks.API.Controllers.ImagesController",
+    "Method": "Upload",
+    "RelativePath": "api/Images/Upload",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "loginRequestDto",
-        "Type": "NZWalks.API.Models.DTO.LoginRequestDto",
-        "IsRequired": true
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileDescription",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

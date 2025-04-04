@@ -8,31 +8,40 @@ using NZWalks.API.Data;
 using NZWalks.API.Models.Domain;
 using NZWalks.API.Models.DTO;
 using NZWalks.API.Repositories;
+using System.Text.Json;
 
 namespace NZWalks.API.Controllers
 {
     //https://localhost:portnumber/api/regions
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class RegionsController : ControllerBase
     {
         private readonly IRegionRepository regionRepository;
         private readonly IMapper mapper;
+        private readonly ILogger<RegionsController> logger;
 
-        public RegionsController(IRegionRepository regionRepository, IMapper mapper)
+        public RegionsController(IRegionRepository regionRepository, IMapper mapper, ILogger<RegionsController> logger)
         {
             this.regionRepository = regionRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         // GET ALL REGIONS
         // GET: https://localhost:portnumber/api/regions
         [HttpGet]
+        //[Authorize(Roles = "Reader,Writer")]
+
+
         public async Task<IActionResult> GetAll()
         {
+            //Log Information
+            logger.LogInformation("GetAll Regions is called");
             //Get Data From Database - Domain Models
             var regionsDomain = await regionRepository.GetAllAsync();
+
+            logger.LogInformation($"Finished GetAllRegions with Data: {JsonSerializer.Serialize(regionsDomain)}");
             //With Automapper
             return Ok(mapper.Map<List<RegionDto>>(regionsDomain));
 
@@ -69,6 +78,8 @@ namespace NZWalks.API.Controllers
         // GET: https://localhost:portnumber/api/regions/{id}
         [HttpGet]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Reader,Writer")]
+
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             //Find() method can only used for primary key, we cannot use it for other properties
@@ -100,7 +111,9 @@ namespace NZWalks.API.Controllers
         // POST to Create New Region
         // POST: https://localhost:portnumber/api/regions
         [HttpPost]
-        [ValidateModelAttribute]
+        [ValidateModel]
+        [Authorize(Roles = "Writer")]
+
         public async Task<IActionResult> Create([FromBody] AddRegionRequestDto addRegionRequestDto)
         {
             //Map or Convert DTO to Domain Model
@@ -135,7 +148,8 @@ namespace NZWalks.API.Controllers
         // PUT: https://localhost:portnumber/api/regions/{id}
         [HttpPut]
         [Route("{id:Guid}")]
-        [ValidateModelAttribute]
+        [Authorize(Roles = "Writer")]
+        [ValidateModel]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRegionRequestDTO updateRegionRequestDTO)
         {
             //Map DTO to Domain Model
@@ -170,6 +184,7 @@ namespace NZWalks.API.Controllers
         // Delete Region
         // DELETE: https://localhost:portnumber/api/regions/{id}
         [HttpDelete]
+        [Authorize(Roles = "Writer")]
         [Route("{id:Guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {

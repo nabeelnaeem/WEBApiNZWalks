@@ -154,3 +154,12 @@ F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\De
 F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
 F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Serilog.dll
+F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Serilog.AspNetCore.dll
+F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+F:\Lectures and Projects\Projects\Udemy\WEBApiNZWalks\NZWalks\NZWalks.API\bin\Debug\net8.0\Serilog.Sinks.File.dll
